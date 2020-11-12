@@ -5,11 +5,342 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Trello Board</title>
-        <link rel="stylesheet" href="external.css">
-        <link rel="stylesheet" href="utils.css">
-        <link rel="stylesheet" href="trello-dashboard.css">
-        <link rel="stylesheet" href="trello-board.css">
+        <title>Developer-Hut</title>
+        <style>
+             /*
+    starting CSS for body,div and navigation
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Segoe UI, Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    color:darkblue;
+    margin-bottom: 0;
+    overflow-x: hidden;
+}
+
+.board {
+    display: flex;
+    flex-basis: 100%;
+    flex-wrap: nowrap;
+    overflow: auto;
+    margin-top: 20px;
+    padding: 84px 20px 20px;
+}
+
+.task-list-wrapper {
+    flex-shrink: 0;
+    flex-basis: 240px;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.task-list {
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 4px;
+    background-color: rgba( 240, 240, 240, 0.9 );
+}
+
+.task-list-title-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-list-title {
+    margin: 4px;
+    font-weight: bold;
+}
+
+.task-list-more {
+    margin: 0 4px;
+}
+
+.task {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: white;
+}
+
+.task .task-edit {
+    float: right;
+    display: none;
+}
+
+.task:hover .task-edit {
+    display: inline;
+}
+
+.add-card-message, .add-list-message {
+    margin-bottom: 4px 0 8px;
+}
+
+.task-list .task, .task-list input, .task-list textarea, .task-list button {
+    border-radius: 4px;
+}
+
+input, textarea {
+    border: none;
+    outline: none;
+}
+
+.add-card-form-actions, .add-list-form-actions {
+    margin: 10px 0;
+}
+
+.add-card-button, .add-list-button {
+    margin-right: 8px;
+}
+
+.add-card-cancel, .add-list-cancel {
+    position: relative;
+    top: 3px;
+}
+ 
+ //-------------------------------------------------------------------------------------------------
+ //CSS for body and div container...............
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url( "https://wallpaperboat.com/wp-content/uploads/2020/06/03/42361/aesthetic-anime-17.jpg" );
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    padding: 8px 20px;
+    background-color: rgba( 64, 144, 172, 0.65 );
+    color: white;
+}
+
+.navbar .pointer:hover {
+    opacity: 0.75;
+}
+
+.navbar > * {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navbar .menu > *, .navbar .actions > * {
+    display: inline-block;
+    padding: 8px;
+    border-radius: 2px;
+    margin: 0px 4px;
+    background-color: rgb(76, 252, 23);
+}
+
+.navbar .menu {
+    justify-content: flex-start;
+}
+
+.navbar .menu-input {
+    background-color: transparent;
+    padding: 0;
+}
+
+.navbar .menu-input input {
+    width: 120px;
+    padding: 4px 0.5em;
+    border: none;
+    border-radius: 2px;
+    outline: none;
+    background-color: rgb(64, 172, 172);
+    color: white;
+    font-size: 1.15em;
+    line-height: 1.4;
+    color: black;
+}
+
+.navbar .menu-input input:focus {
+    background-color: white;
+}
+
+.navbar .app-title {
+    justify-content: space-around;
+    font-family: "Cooper Black";
+    font-size: 2.1em;
+    color: rgb(124, 42, 4);
+}
+
+.navbar .actions {
+    justify-content: flex-end;
+}
+
+.board-container {
+    display: flex;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.board-menu {
+    position: fixed;
+    top: 50px;
+    right: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    padding: 0 20px;
+    color: black;
+    background-color: rgba( 128, 128, 128, 0.3 );
+    color: white;
+}
+.board-title
+{
+    color:rgb(76, 252, 23);
+    font-size:2em;
+    font-family: "Cooper Black";
+}
+
+.board-show-menu
+{
+font-size: 1.3em;
+color:rgb(76, 252, 23);
+}
+//----------------------------------------------------------------------------------------------------------------
+/* this is for board and their menu titles properties*/
+
+
+.my-3 {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.full-width-input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid lightgray;
+    font-size: 1em;
+    resize: none;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    font-size: 1.2em;
+    color:rgb(124, 42, 4)
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.btn-inline {
+    display: inline-block;
+    width: auto;
+}
+
+.btn-primary {
+    background-color: rgb(124, 42, 4);
+    color: white;
+}
+
+.pointer {
+    cursor: pointer !important;
+}
+
+.pointer:hover {
+    opacity: 0.7;
+}
+
+.pointer:active {
+    outline: none;
+}
+
+/*
+---------------------------------------------------------------------
+*/
+
+.my-3 {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.full-width-input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid lightgray;
+    font-size: 1em;
+    resize: none;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    font-size: 1.2em;
+    color: #aaa;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.btn-inline {
+    display: inline-block;
+    width: auto;
+}
+
+.btn-primary {
+    background-color: olive;
+    color: white;
+}
+
+//-----------------------------------------------------------------
+
+
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 2;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+
+        </style>
+        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     </head>
     <body>
@@ -20,7 +351,7 @@
                 </li>
                 <li class="pointer">
                     <i class="boards fas fa-th-list"></i>
-                    Boards
+                    Services
                 </li>
                 <li class="menu-input">
                     <input type="text" />
@@ -40,7 +371,7 @@
         </nav>
         <div class="board-container">
             <div class="board-menu">
-                <div class="board-title">Frontend Training</div>
+                <div class="board-title">Trainning.....</div>
                 <div class="board-show-menu pointer">
                     <i class="fas fa-ellipsis-v"></i>
                     Show menu
